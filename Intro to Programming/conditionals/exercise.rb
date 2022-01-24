@@ -1,28 +1,22 @@
 # Write a method is_div_by_5(number) that takes in a number and returns the
 # boolean true if the given number is divisible by 5, false otherwise
-
 def is_div_by_5(number)
-  return number % 5 == 0
+  number % 5 == 0
 end
 
-# puts is_div_by_5(10) # => true
-# puts is_div_by_5(40) # => true
-# puts is_div_by_5(42) # => false
-# puts is_div_by_5(8)  # => false
+# puts is_div_by_5(10) == true
+# puts is_div_by_5(40) == true
+# puts is_div_by_5(42) == false
+# puts is_div_by_5(8) == false
 
 # Write a method either_only(number) that takes in a number and returns true if
 # the number is divisible by either 3 or 5, but not both. The method should
 # return false otherwise.
 def either_only(num)
-  if num % 3 == 0 && num % 5 == 0
-    return false
-  elsif num % 3 == 0
-    return true
-  elsif num % 5 == 0
-    return true
-  else
-    return false
-  end
+  return false if num % 3 == 0 && num % 5 == 0
+  return true if num % 3 == 0 || num % 5 == 0
+
+  false
 end
 
 # puts either_only(9)  # => true
@@ -34,11 +28,9 @@ end
 # Write a method larger_number(num1, num2) that takes in two numbers and returns
 # the larger of the two numbers.
 def larger_number(num1, num2)
-  if num1 > num2
-    return num1
-  else
-    return num2
-  end
+  return num1 if num1 > num2
+
+  num2
 end
 
 # puts larger_number(42, 28)   # => 42
@@ -48,13 +40,8 @@ end
 # the longer of the two strings. In the case of a tie, the method should return
 # the first string.
 def longer_string(str1, str2)
-  if str1.length == str2.length
-    return str1
-  elsif str1.length > str2.length
-    return str1
-  else
-    return str2
-  end
+  return str1 if str1.length >= str2.length
+  str2
 end
 
 # puts longer_string("app", "academy") # => "academy"
@@ -65,13 +52,17 @@ end
 # The method should return the string 'positive' if the num is positive,
 # 'negative' if the num is negative, and 'zero' if the num is zero.
 def number_check(num)
+  result = ""
+
   if num > 0
-    return "positive"
+    result = "positive"
   elsif num < 0
-    return "negative"
+    result = "negative"
   else
-    return "zero"
+    result = "zero"
   end
+
+  return result
 end
 
 # puts number_check(5)    # => "positive"
@@ -83,15 +74,17 @@ end
 # characters, "short" if it is less than 6 characters, and "medium" if it is
 # exactly 6 characters long.
 def word_check(word)
-  length_of_word = word.length
+  result = ""
 
-  if length_of_word == 6
-    return "medium"
-  elsif length_of_word > 6
-    return "long"
+  if word.length > 6
+    result = "long"
+  elsif word.length < 6
+    result = "short"
   else
-    return "short"
+    result = "medium"
   end
+
+  return result
 end
 
 # puts word_check("contraption") # => "long"
