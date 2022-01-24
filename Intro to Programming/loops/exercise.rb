@@ -2,7 +2,16 @@
 # number of e's in the word
 
 def count_e(words)
-  return words.count("e")
+  # words.count('e')
+  count_of_e = 0
+
+  index = 0
+  while index < words.length
+    count_of_e += 1 if words[index].downcase == "e"
+    index += 1
+  end
+
+  count_of_e
 end
 
 # puts count_e("movie") == 1
@@ -11,7 +20,15 @@ end
 # Write a method count_a(word) that takes in a string word and returns the number
 # of a's in the word. The method should count both lowercase (a) and uppercase (A)
 def count_a(word)
-  return word.downcase.count("a")
+  count_of_a = 0
+
+  index = 0
+  while index < word.length
+    count_of_a += 1 if word[index] == "a" || word[index] == "A"
+    index += 1
+  end
+
+  return count_of_a
 end
 
 # puts count_a("application") == 2
@@ -22,16 +39,17 @@ end
 # Write a method, count_vowels(word), that takes in a string word and returns
 # the number of vowels in the word. Vowels are the letters a, e, i, o, u.
 def count_vowels(word)
-  vowels = ["a", "i", "e", "o", "u"]
-  vowel_count = 0
-  i = 0
+  vowels = ["a", "e", "i", "o", "u"]
+  total_number_of_vowels = 0
 
-  while i < word.length
-    char = word[i]
-    vowel_count += 1 if vowels.include?(char)
-    i += 1
+  index = 0
+  while index < word.length
+    current_char = word[index].downcase
+    total_number_of_vowels += 1 if vowels.include?(current_char)
+    index += 1
   end
-  vowel_count
+
+  total_number_of_vowels
 end
 
 # puts count_vowels("bootcamp") == 3
@@ -43,10 +61,10 @@ end
 def sum_nums(max)
   sum = 0
 
-  i = 0
-  while i <= max
-    sum += i
-    i += 1
+  counter = 0
+  while counter <= max
+    sum += counter
+    counter += 1
   end
 
   sum
@@ -59,12 +77,11 @@ end
 # product of all numbers from 1 up to and including num.
 def factorial(num)
   fact = 1
-  return fact if num <= 1
 
-  i = 1
-  while i <= num
-    fact *= i
-    i += 1
+  counter = 1
+  while counter <= num
+    fact *= counter
+    counter += 1
   end
 
   fact
@@ -78,12 +95,13 @@ end
 # with its letters in reverse order.
 def reverse(word)
   reversed_word = ""
-  endIndex = word.length - 1
 
-  while endIndex >= 0
-    char = word[endIndex]
-    reversed_word += char
-    endIndex -= 1
+  index = word.length - 1
+
+  while index >= 0
+    current_char = word[index]
+    reversed_word += current_char
+    index -= 1
   end
 
   reversed_word
@@ -100,6 +118,6 @@ def is_palindrome(word)
   word == reverse(word)
 end
 
-# puts is_palindrome("racecar") == true
-# puts is_palindrome("kayak") == true
-# puts is_palindrome("bootcamp") == false
+puts is_palindrome("racecar") == true
+puts is_palindrome("kayak") == true
+puts is_palindrome("bootcamp") == false
